@@ -47,7 +47,8 @@ public partial class MainViewModel : ObservableObject
         //  1. query property: await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Text={s}");
         //  2. URI
         // to send simple data type like strings and integers across
-        await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Text={s}");
+        await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Text={s}"); // [QueryProperty("Text", "Text")]
+        // await Shell.Current.GoToAsync($"{nameof(DetailPage)}?id={s}"); // [QueryProperty("Text", "id")]
 
         // to send a complex data type, like a person or a car or some other data object
         // await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Text={s}",

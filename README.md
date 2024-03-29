@@ -198,9 +198,9 @@
     }
 	```
  
-* there's two ways to pass DetailPage information
-	1. query property: await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Text={s}");
-		* MainViewModel.cs
+* there's two ways(query property, data binding) to pass DetailPage information
+	1. use query property way: await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Text={s}");
+		a. MainViewModel.cs
 		```csharp
 		[RelayCommand]
 		async Task Tap(string s)
@@ -212,7 +212,9 @@
 			//  1. query property: await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Text={s}");
 			//  2. URI
 			// to send simple data type like strings and integers across
-			await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Text={s}");
+			await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Text={s}"); // [QueryProperty("Text", "Text")]
+			// await Shell.Current.GoToAsync($"{nameof(DetailPage)}?id={s}"); // [QueryProperty("Text", "id")]
+
 
 			// to send a complex data type, like a person or a car or some other data object
 			// await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Text={s}",
@@ -222,7 +224,49 @@
 			//        });
 		}
 		```
-		* How are we going to get that string into our detail view model?
-			> we can add a query property in one of two places.
-			> dd
-			> 
+		b. How are we going to get that string into our detail view model?
+			* DetailViewModel.cs: add [QueryProperty(name, queryId)]
+				```csharp
+				namespace MauiApp3.ViewModel;
+
+				[QueryProperty("Text", "id")]
+				// await Shell.Current.GoToAsync($"{nameof(DetailPage)}?id={s}");
+				```
+			* DetailViewModel.cs: add name property of QueryProperty(name, queryId)
+				```csharp
+				public partial class DetailViewModel : ObservableObject
+				{
+					[ObservableProperty]
+					string text; // "Text" property  of [QueryProperty("Text", "id")]
+				}
+				```
+	2. use data binding way: async Task to go back
+		a. DetailViewModel.cs: add async Task
+			```csharp			
+			[RelayCommand]
+			async Task GoBack()
+			{
+				await Shell.Current.GoToAsync("..");
+			}
+			```
+		b. DetailPage.xaml: add ViewModel and View Combine to ContentPage and Add Data Binding
+			* ViewModel and View Combine to ContentPage: add xmlns:viewmodel and x:DataType
+				```csharp
+				<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+							 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+							 x:Class="MauiApp3.DetailPage"
+							 xmlns:viewmodel="clr-namespace:MauiApp3.ViewModel"
+							 x:DataType="viewmodel:DetailViewModel"
+							 Title="DetailPage">
+				```
+			* add Go Back button and setting Data Binding for controls
+				```csharp
+				<Label 
+        			Text="{Binding Text}"
+        			FontSize="25"
+        			VerticalOptions="Center" 
+        			HorizontalOptions="Center" />
+
+     			<Button Text="Go Back"
+						Command="{Binding GoBackCommand}"/>
+				```
