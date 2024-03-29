@@ -199,8 +199,8 @@
 	```
  
 * there's two ways(query property, data binding) to pass DetailPage information
-	1. use query property way: await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Text={s}");
-		a. MainViewModel.cs
+	1. use query property way: await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Text={s}");  
+		1) MainViewModel.cs
 		```csharp
 		[RelayCommand]
 		async Task Tap(string s)
@@ -224,7 +224,7 @@
 			//        });
 		}
 		```
-		b. How are we going to get that string into our detail view model?
+		2) How are we going to get that string into our detail view model?  
 			* DetailViewModel.cs: add [QueryProperty(name, queryId)]
 				```csharp
 				namespace MauiApp3.ViewModel;
@@ -240,8 +240,8 @@
 					string text; // "Text" property  of [QueryProperty("Text", "id")]
 				}
 				```
-	2. use data binding way: async Task to go back
-		a. DetailViewModel.cs: add async Task
+	2. use data binding way: async Task to go back	
+		1) DetailViewModel.cs: add async Task
 			```csharp			
 			[RelayCommand]
 			async Task GoBack()
@@ -249,7 +249,7 @@
 				await Shell.Current.GoToAsync("..");
 			}
 			```
-		b. DetailPage.xaml: add ViewModel and View Combine to ContentPage and Add Data Binding
+		2) DetailPage.xaml: add ViewModel and View Combine to ContentPage and Add Data Binding
 			* ViewModel and View Combine to ContentPage: add xmlns:viewmodel and x:DataType
 				```csharp
 				<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
