@@ -3,9 +3,9 @@
 ## About
 (Example).NET MAUI  for Beginners
 
-[Build .NET MAUI UI with XAML [4 of 8] | .NET MAUI for Beginners](https://youtu.be/l5qJRYwhyOY?si=hbn0OtV4qUZiAOXy)
-[.NET MAUI Data Binding with MVVM & XAML [5 of 8] | .NET MAUI for Beginners](https://youtu.be/5Qga2pniN78?si=PAhENHsYOcuLo-EoY)
-[Navigating Between Pages in .NET MAUI [6 of 8] | .NET MAUI for Beginners](https://youtu.be/ddmZ6k1GIkM?si=k044iqszyKdoxz2X)
+* [Build .NET MAUI UI with XAML [4 of 8] | .NET MAUI for Beginners](https://youtu.be/l5qJRYwhyOY?si=hbn0OtV4qUZiAOXy)
+* [.NET MAUI Data Binding with MVVM & XAML [5 of 8] | .NET MAUI for Beginners](https://youtu.be/5Qga2pniN78?si=PAhENHsYOcuLo-EoY)
+* [Navigating Between Pages in .NET MAUI [6 of 8] | .NET MAUI for Beginners](https://youtu.be/ddmZ6k1GIkM?si=k044iqszyKdoxz2X)
 
 ## Environment
 * IDE: Visual Studio 2022
