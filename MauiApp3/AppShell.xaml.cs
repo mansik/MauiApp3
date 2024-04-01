@@ -6,6 +6,7 @@ public partial class AppShell : Shell
     {
         InitializeComponent();
 
+        // register DetailPage with the routing system of .MAUIShell
         Routing.RegisterRoute(nameof(DetailPage), typeof(DetailPage));
     }
 }

@@ -3,6 +3,8 @@ using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 
 namespace MauiApp3.ViewModel;
+
+// Add ViewModel class and inherit from ObservableObject
 public partial class MainViewModel : ObservableObject
 {
     public MainViewModel()

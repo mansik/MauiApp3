@@ -19,6 +19,7 @@ public static class MauiProgram
         builder.Logging.AddDebug();
 #endif
         // [Dependency injection](https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/dependency-injection?view=net-maui-8.0&source=docs)
+        // register DetailPage and DetailViewModel in MAUI program(Dependency injection)
         // AddSingleton<T>: Creates a single instance of the object which will remain for the lifetime of the app.
         // AddTransient<T>	Creates a new instance of the object when requested during resolution.
 
